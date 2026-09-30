@@ -140,7 +140,7 @@ export default function Navbar() {
             onClick={handleLogoutToggle}
             aria-label={isLoggedIn ? 'Log out' : 'Log in'}
             title={isLoggedIn ? 'Log out' : 'Log in'}
-            className="hidden h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-[14px] border border-[#DDD7D0] bg-transparent transition-all duration-200 hover:bg-black/[0.04] active:scale-95 md:flex lg:h-11 lg:w-11 lg:rounded-[16px]"
+            className="hidden h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-[14px] bg-white shadow-sm transition-all duration-200 hover:bg-white/90 active:scale-95 md:flex lg:h-11 lg:w-11 lg:rounded-[16px]"
           >
             <img src={logoutIcon} alt="" className="h-5 w-5 object-contain" />
           </button>
@@ -219,7 +219,7 @@ export default function Navbar() {
               }}
               className="flex w-full cursor-pointer items-center gap-2.5 rounded-xl border border-black/10 p-2.5 text-left transition-all hover:bg-black/5"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-[10px] border border-[#DDD7D0]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-[10px] border border-black/5 bg-white shadow-sm">
                 <img src={logoutIcon} alt="" className="h-4 w-4 object-contain" />
               </div>
               <div>

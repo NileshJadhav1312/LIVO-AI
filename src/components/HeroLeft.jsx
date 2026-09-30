@@ -19,7 +19,7 @@ export default function HeroLeft() {
       </h1>
 
       {/* Paragraph */}
-      <p className="mt-5 max-w-[460px] text-[clamp(14px,1.9vw,17px)] font-normal leading-[1.65] tracking-[-0.01em] text-[#55555D] sm:mt-7">
+      <p className="mt-4 max-w-[460px] text-[clamp(12px,1.4vw,14px)] font-normal leading-[1.65] tracking-[-0.01em] text-[#55555D] sm:mt-6">
         Livo AI records your meetings, recognizes who's speaking, and provides
         real-time insights and live recommendations — all without taking manual notes.
       </p>
@@ -60,14 +60,22 @@ export default function HeroLeft() {
         </div>
       </div>
 
-      {/* Perks */}
-      <div className="mt-6 flex w-full max-w-[390px] flex-col gap-2.5 text-[clamp(12.5px,1.8vw,13.5px)] font-semibold tracking-[-0.01em] text-[#1A1A1E] sm:mt-8">
-        <div className="flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:justify-between">
-          <span className="flex items-center gap-1.5"><Dot />31-day free trial</span>
-          <span className="flex items-center gap-1.5"><Dot />No credit card required</span>
+      {/* Perks: Single row on desktop, two rows on mobile */}
+      {/* Desktop single row */}
+      <div className="mt-6 hidden lg:flex flex-row items-center gap-4 xl:gap-5 text-[12.5px] xl:text-[13.5px] font-semibold tracking-[-0.01em] text-[#1A1A1E] sm:mt-8">
+        <span className="flex items-center gap-1.5 whitespace-nowrap"><Dot />31-day free trial</span>
+        <span className="flex items-center gap-1.5 whitespace-nowrap"><Dot />No credit card required</span>
+        <span className="flex items-center gap-1.5 whitespace-nowrap"><Dot />Cancel anytime</span>
+      </div>
+
+      {/* Mobile & Tablet two rows */}
+      <div className="mt-6 flex lg:hidden w-full max-w-[390px] flex-col gap-2 text-[12.5px] font-semibold tracking-[-0.01em] text-[#1A1A1E] sm:mt-8">
+        <div className="flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-1.5">
+          <span className="flex items-center gap-1.5 whitespace-nowrap"><Dot />31-day free trial</span>
+          <span className="flex items-center gap-1.5 whitespace-nowrap"><Dot />No credit card required</span>
         </div>
         <div className="flex w-full items-center justify-center">
-          <span className="flex items-center gap-1.5"><Dot />Cancel anytime</span>
+          <span className="flex items-center gap-1.5 whitespace-nowrap"><Dot />Cancel anytime</span>
         </div>
       </div>
     </div>
