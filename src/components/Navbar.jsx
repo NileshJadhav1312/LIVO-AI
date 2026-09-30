@@ -165,62 +165,72 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile dropdown: absolute overlay so it never shifts/pushes the main screen downwards */}
       {mobileMenuOpen && (
-        <div className="mt-2 flex flex-col gap-2.5 rounded-2xl border border-black/10 bg-white/95 p-3 shadow-2xl backdrop-blur-md sm:p-4 md:hidden">
-          <div className="flex flex-col gap-0.5">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between rounded-lg px-2.5 py-2.5 text-[15px] font-semibold tracking-tight text-black transition-colors hover:bg-black/5"
-              >
-                <span>{link.name}</span>
-                <ArrowRight className="h-3.5 w-3.5 opacity-35" />
-              </a>
-            ))}
-          </div>
+        <>
+          {/* Backdrop to dismiss when clicking outside */}
+          <div
+            className="fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px] md:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
 
-          <div className="h-px bg-black/10" />
+          {/* Floating dropdown card */}
+          <div className="absolute left-0 right-0 top-full z-50 mt-2.5 flex flex-col gap-2.5 rounded-2xl border border-black/10 bg-white/95 p-3.5 shadow-2xl backdrop-blur-md sm:p-4 md:hidden animate-in fade-in slide-in-from-top-2">
+            <div className="flex flex-col gap-0.5">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between rounded-lg px-2.5 py-2.5 text-[15px] font-semibold tracking-tight text-black transition-colors hover:bg-black/5"
+                >
+                  <span>{link.name}</span>
+                  <ArrowRight className="h-3.5 w-3.5 opacity-35" />
+                </a>
+              ))}
+            </div>
 
-          <button
-            onClick={() => {
-              setShowProfileModal(true);
-              setMobileMenuOpen(false);
-            }}
-            className="flex w-full cursor-pointer items-center justify-between rounded-xl bg-black/[0.03] p-2.5 text-left transition-all hover:bg-black/5"
-          >
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-[10px] border border-black/5 bg-white shadow-sm">
-                <img src={profileIcon} alt="" className="h-[18px] w-[18px] object-contain" />
+            <div className="h-px bg-black/10" />
+
+            <button
+              onClick={() => {
+                setShowProfileModal(true);
+                setMobileMenuOpen(false);
+              }}
+              className="flex w-full cursor-pointer items-center justify-between rounded-xl bg-black/[0.03] p-2.5 text-left transition-all hover:bg-black/5"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-[10px] border border-black/5 bg-white shadow-sm">
+                  <img src={profileIcon} alt="" className="h-[18px] w-[18px] object-contain" />
+                </div>
+                <div>
+                  <div className="text-[13.5px] font-semibold leading-tight text-black">My Account</div>
+                  <div className="text-[11.5px] leading-tight text-black/60">Signed in as Nilesh</div>
+                </div>
+              </div>
+              <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10.5px] font-semibold text-purple-700">Pro</span>
+            </button>
+
+            <button
+              onClick={() => {
+                handleLogoutToggle();
+                setMobileMenuOpen(false);
+              }}
+              className="flex w-full cursor-pointer items-center gap-2.5 rounded-xl border border-black/10 p-2.5 text-left transition-all hover:bg-black/5"
+            >
+              <div className="flex h-8 w-8 items-center justify-center rounded-[10px] border border-[#DDD7D0]">
+                <img src={logoutIcon} alt="" className="h-4 w-4 object-contain" />
               </div>
               <div>
-                <div className="text-[13.5px] font-semibold leading-tight text-black">My Account</div>
-                <div className="text-[11.5px] leading-tight text-black/60">Signed in as Nilesh</div>
+                <div className="text-[13.5px] font-semibold leading-tight text-black">{isLoggedIn ? 'Log out' : 'Log in'}</div>
+                <div className="text-[11.5px] leading-tight text-black/60">
+                  {isLoggedIn ? 'Sign out of your session' : 'Sign in to your account'}
+                </div>
               </div>
-            </div>
-            <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10.5px] font-semibold text-purple-700">Pro</span>
-          </button>
-
-          <button
-            onClick={() => {
-              handleLogoutToggle();
-              setMobileMenuOpen(false);
-            }}
-            className="flex w-full cursor-pointer items-center gap-2.5 rounded-xl border border-black/10 p-2.5 text-left transition-all hover:bg-black/5"
-          >
-            <div className="flex h-8 w-8 items-center justify-center rounded-[10px] border border-[#DDD7D0]">
-              <img src={logoutIcon} alt="" className="h-4 w-4 object-contain" />
-            </div>
-            <div>
-              <div className="text-[13.5px] font-semibold leading-tight text-black">{isLoggedIn ? 'Log out' : 'Log in'}</div>
-              <div className="text-[11.5px] leading-tight text-black/60">
-                {isLoggedIn ? 'Sign out of your session' : 'Sign in to your account'}
-              </div>
-            </div>
-          </button>
-        </div>
+            </button>
+          </div>
+        </>
       )}
     </nav>
   );

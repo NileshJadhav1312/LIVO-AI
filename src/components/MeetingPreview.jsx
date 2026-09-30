@@ -113,7 +113,7 @@ function ParticipantCard({ name, image, isActive = false, containerClassName = '
   );
 
   return (
-    <div className={`z-20 w-[27%] select-none ${containerClassName}`}>
+    <div className={`z-20 w-[25%] sm:w-[26%] select-none ${containerClassName}`}>
       {isActive ? (
         /* Active speaker: gradient border + warm inner frame */
         <div className="rounded-[clamp(14px,2.8vw,28px)] bg-gradient-to-tr from-[#a855f7] via-[#ec4899] to-[#fb923c] p-[1px] shadow-lg shadow-pink-500/20 sm:p-[1.5px]">
@@ -129,34 +129,34 @@ function ParticipantCard({ name, image, isActive = false, containerClassName = '
 /* ---------- Main ---------- */
 export default function MeetingPreview() {
   return (
-    <div className="flex w-full items-center justify-center px-4 py-4 sm:px-6 sm:py-6 lg:justify-end lg:px-0">
+    <div className="flex w-full items-center justify-center px-2 py-4 sm:px-4 sm:py-6 lg:justify-end lg:px-0">
       {/* Everything inside is sized in % of this box, so the whole
-          composition scales smoothly on every screen. */}
-      <div className="relative mx-auto flex w-full max-w-[340px] items-center justify-center min-[420px]:max-w-[420px] sm:max-w-[560px] md:max-w-[620px] lg:mx-0 lg:max-w-[660px] xl:max-w-[700px]">
+          composition scales smoothly with consistent gaps on every screen. */}
+      <div className="relative mx-auto flex w-full max-w-[340px] items-center justify-center min-[420px]:max-w-[420px] sm:max-w-[500px] md:max-w-[530px] lg:mx-0 lg:max-w-[530px] xl:max-w-[600px]">
         <ParticipantCard
           name="Conrad"
           image={conradImg}
           isActive
-          containerClassName="absolute -left-[4%] top-[4%] sm:top-[6%]"
+          containerClassName="absolute left-0 top-[4%] sm:top-[6%]"
         />
         <ParticipantCard
           name="Sofia"
           image={sofiaImg}
-          containerClassName="absolute -right-[4%] top-[6%] sm:top-[8%]"
+          containerClassName="absolute right-0 top-[6%] sm:top-[8%]"
         />
         <ParticipantCard
           name="Elena"
           image={elenaImg}
-          containerClassName="absolute -left-[3%] bottom-[12%] sm:bottom-[16%] lg:bottom-[20%]"
+          containerClassName="absolute left-0 bottom-[12%] sm:bottom-[16%] lg:bottom-[20%]"
         />
         <ParticipantCard
           name="Sarah"
           image={sarahImg}
-          containerClassName="absolute -right-[3%] bottom-[12%] sm:bottom-[16%] lg:bottom-[20%]"
+          containerClassName="absolute right-0 bottom-[12%] sm:bottom-[16%] lg:bottom-[20%]"
         />
 
         {/* Phone screenshot */}
-        <div className="relative z-10 flex w-[62%] items-center justify-center sm:w-[58%] lg:w-[60%]">
+        <div className="relative z-10 flex w-[58%] items-center justify-center sm:w-[55%] lg:w-[56%]">
           <img
             src={meetingScreenshot}
             alt="Livo AI Meeting Assistant"

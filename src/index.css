@@ -22,3 +22,17 @@ html, body, button, input, select, textarea, div, span, p, a, h1, h2, h3 {
 .animate-waveform {
   animation: pulse-wave 1.2s ease-in-out infinite alternate;
 }
+
+/* Smooth rotating beam animation for button hover */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
