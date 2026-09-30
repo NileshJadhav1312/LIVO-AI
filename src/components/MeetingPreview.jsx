@@ -142,7 +142,7 @@ export default function MeetingPreview() {
         <ParticipantCard
           name="Sofia"
           image={sofiaImg}
-          containerClassName="absolute right-0 top-[6%] sm:top-[8%]"
+          containerClassName="absolute -right-[4px] sm:-right-[12px] top-[6%] sm:top-[8%]"
         />
         <ParticipantCard
           name="Elena"

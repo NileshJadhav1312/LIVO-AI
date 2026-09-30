@@ -107,7 +107,7 @@ export default function Navbar() {
       )}
 
       {/* Header row: flex so links never wrap or squeeze */}
-      <div className="flex items-center justify-between gap-3 py-2 sm:py-3">
+      <div className="flex items-center justify-between gap-3 py-1 sm:py-1.5">
         {/* Logo */}
         <a href="#" className="group flex shrink-0 items-center" aria-label="Livo AI Home">
           <div className="flex h-10 w-10 items-center justify-center rounded-[13px] bg-black shadow-md transition-transform duration-200 group-hover:scale-105 sm:h-11 sm:w-11 sm:rounded-[15px] lg:h-12 lg:w-12 lg:rounded-[16px]">
@@ -121,15 +121,17 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Desktop links: fluid font + gap, never wrap */}
+        {/* Desktop links: fluid font + gap, never wrap, animated start-to-end underline */}
         <div className="hidden flex-1 items-center justify-center gap-[clamp(14px,2.8vw,48px)] md:flex">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="whitespace-nowrap text-[clamp(14px,1.55vw,19.5px)] font-semibold tracking-[-0.015em] text-[#18181B] transition-colors hover:text-black"
+              className="group relative whitespace-nowrap py-1 text-[clamp(14px,1.55vw,19.5px)] font-medium tracking-[-0.015em] text-[#18181B] transition-colors hover:text-black"
             >
-              {link.name}
+              <span>{link.name}</span>
+              {/* Start to end animated underline */}
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 rounded-full bg-black transition-all duration-300 ease-out group-hover:w-full" />
             </a>
           ))}
         </div>
@@ -140,7 +142,7 @@ export default function Navbar() {
             onClick={handleLogoutToggle}
             aria-label={isLoggedIn ? 'Log out' : 'Log in'}
             title={isLoggedIn ? 'Log out' : 'Log in'}
-            className="hidden h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-[14px] bg-white shadow-sm transition-all duration-200 hover:bg-white/90 active:scale-95 md:flex lg:h-11 lg:w-11 lg:rounded-[16px]"
+            className="hidden h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-[14px] bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-105 hover:shadow-md active:scale-95 md:flex lg:h-11 lg:w-11 lg:rounded-[16px]"
           >
             <img src={logoutIcon} alt="" className="h-5 w-5 object-contain" />
           </button>
@@ -149,7 +151,7 @@ export default function Navbar() {
             onClick={() => setShowProfileModal(true)}
             aria-label="Account"
             title="Account Profile"
-            className="hidden h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-[14px] bg-white shadow-sm transition-all duration-200 hover:bg-white/90 active:scale-95 md:flex lg:h-11 lg:w-11 lg:rounded-[16px]"
+            className="hidden h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-[14px] bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-105 hover:shadow-md active:scale-95 md:flex lg:h-11 lg:w-11 lg:rounded-[16px]"
           >
             <img src={profileIcon} alt="" className="h-[22px] w-[22px] object-contain" />
           </button>
